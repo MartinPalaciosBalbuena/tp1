@@ -1,0 +1,945 @@
+* {
+  width: auto;
+  max-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   VARIABLES CSS GLOBALES
+======================================== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-primary: black; /*aca*/
+  --text-secondary: black;
+  --card-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --footer-bg: #333333;
+  --footer-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --card-bg: #1e1e1e;
+  --header-bg: rgba(26, 26, 26, 0.95);
+  --footer-bg: #000000;
+  --footer-text: #ffffff;
+}
+
+/* ========================================
+   ÍNDICE DE CONTENIDO:
+   
+   1. ESTILOS GENERALES (Todas las páginas)
+      - Checkbox tema
+      - Body y container
+      - Header y navegación
+      - Botón de tema
+      - Footer
+   
+   2. PÁGINA INDEX.HTML
+      - Hero section
+      - About section
+      - Services section
+   
+   3. PÁGINA PRODUCTOS.HTML
+      - Page header
+      - Search section
+      - Categories
+      - Products grid
+   
+   4. PÁGINA CONTACTO.HTML
+      - Contact section
+      - Contact form
+      - Contact info
+      - Map section
+      - FAQ section
+   
+   5. MODO OSCURO
+      - Estilos para tema oscuro
+   
+   6. RESPONSIVE DESIGN
+      - Media queries para móviles
+======================================== */
+
+/* ========================================
+   1. ESTILOS GENERALES - TODAS LAS PÁGINAS
+======================================== */
+
+/* --- Checkbox oculto para controlar el tema --- */
+.theme-checkbox {
+  display: none;
+}
+
+/* --- Body y container base --- */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /*background: white;*/
+}
+
+/* --- Header y navegación (todas las páginas) --- */
+header {
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #667eea;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: #667eea;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* --- Botón de tema (todas las páginas) --- */
+.theme-button {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-button:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Iconos del tema */
+.theme-icon-light {
+  display: block;
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+/* --- Main content base (todas las páginas) --- */
+main {
+  background: white;
+  margin: 2rem auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] main {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Footer (todas las páginas) --- */
+footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 2rem;
+  transition: background 0.3s ease;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #667eea;
+}
+
+/* ========================================
+   FIN ESTILOS GENERALES
+======================================== */
+
+/* ========================================
+   2. PÁGINA INDEX.HTML - ESTILOS ESPECÍFICOS
+======================================== */
+
+/* --- Hero Section (solo index.html) --- */
+.hero {
+  background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"*/ viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><circle fill="%23764ba2" cx="200" cy="150" r="80"/><circle fill="%23667eea" cx="1000" cy="450" r="120"/><polygon fill="%23764ba2" points="600,100 700,300 500,300"/></svg>');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #ff6b6b;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+}
+
+/* --- About Section (solo index.html) --- */
+.about {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.about p {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.about-card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-card h3 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* --- Services Section (solo index.html) --- */
+.services {
+  background: var(--bg-secondary);
+  transition: background 0.3s ease;
+  padding: 4rem 2rem;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: #764ba2;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   FIN PÁGINA INDEX.HTML
+======================================== */
+
+/* ========================================
+   3. PÁGINA PRODUCTOS.HTML - ESTILOS ESPECÍFICOS
+======================================== */
+
+/* --- Page Header (productos.html y contacto.html) --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* --- Search Section (solo productos.html) --- */
+.search-section {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 3rem;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.search-section h3 {
+  /*color: var(--text-primary);*/
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid var(--text-secondary);
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.search-input:focus {
+  border-color: #667eea;
+}
+
+.search-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+}
+
+.search-button:hover {
+  background: #764ba2;
+}
+
+/* --- Categories (solo productos.html) --- */
+.categories {
+  margin-bottom: 3rem;
+}
+
+.categories h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.category-btn {
+  background: var(--bg-secondary);
+  border: 2px solid var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* --- Products Grid (solo productos.html) --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  height: 200px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  /*color: var(--text-primary);*/
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.product-description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.buy-button {
+  width: 100%;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #764ba2;
+}
+
+/* ========================================
+   FIN PÁGINA PRODUCTOS.HTML
+======================================== */
+
+/* ========================================
+   4. PÁGINA CONTACTO.HTML - ESTILOS ESPECÍFICOS
+======================================== */
+
+/* --- Contact Section (solo contacto.html) --- */
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+/* --- Contact Form (solo contacto.html) --- */
+.contact-form {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: background 0.3s ease;
+}
+
+.contact-form h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  /*color: var(--text-primary);*/
+  transition: color 0.3s ease;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--text-secondary);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group input:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* --- Contact Info (solo contacto.html) --- */
+.contact-info {
+  border-radius: 15px;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  transition: background 0.3s ease;
+}
+
+.contact-info h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.info-icon {
+  font-size: 2rem;
+  color: #667eea;
+}
+
+.info-details h3 {
+  /*color: var(--text-primary);*/
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.info-details p {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* --- Map Section (solo contacto.html) --- */
+.map-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.map-section h2 {
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.map-placeholder {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  height: 300px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- FAQ Section (solo contacto.html) --- */
+.faq-section {
+  margin-top: 3rem;
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: background 0.3s ease;
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+.faq-question {
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.faq-answer {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* ========================================
+   FIN PÁGINA CONTACTO.HTML
+======================================== */
+
+/* ========================================
+   5. MODO OSCURO - ESTILOS PARA TEMA OSCURO
+======================================== */
+
+/* --- Aplicación del modo oscuro cuando checkbox está marcado --- */
+.theme-checkbox:checked ~ body,
+.theme-checkbox:checked ~ * {
+  color: #ffffff;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.theme-checkbox:checked ~ header {
+  background: rgba(26, 26, 26, 0.95);
+}
+
+.theme-checkbox:checked ~ header nav a {
+  color: #ffffff;
+}
+
+.theme-checkbox:checked ~ main {
+  background: #1e1e1e;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.theme-checkbox:checked ~ .theme-button {
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+}
+
+.theme-checkbox:checked ~ .theme-button .theme-icon-light {
+  display: none;
+}
+
+.theme-checkbox:checked ~ .theme-button .theme-icon-dark {
+  display: block;
+}
+
+/* --- Textos en modo oscuro --- */
+.theme-checkbox:checked ~ * .about h2,
+.theme-checkbox:checked ~ * .services h2,
+.theme-checkbox:checked ~ * .page-header h1,
+.theme-checkbox:checked ~ * .contact-form h2,
+.theme-checkbox:checked ~ * .contact-info h2,
+.theme-checkbox:checked ~ * .map-section h2,
+.theme-checkbox:checked ~ * .faq-section h2,
+.theme-checkbox:checked ~ * .categories h2 {
+  color: #ffffff;
+}
+
+.theme-checkbox:checked ~ * .about p,
+.theme-checkbox:checked ~ * .page-header p,
+.theme-checkbox:checked ~ * .product-description,
+.theme-checkbox:checked ~ * .info-details p,
+.theme-checkbox:checked ~ * .faq-answer {
+  color: #cccccc;
+}
+
+/* --- Fondos en modo oscuro --- */
+.theme-checkbox:checked ~ * .services,
+.theme-checkbox:checked ~ * .search-section,
+.theme-checkbox:checked ~ * .contact-form,
+.theme-checkbox:checked ~ * .contact-info,
+.theme-checkbox:checked ~ * .faq-section {
+  background: #1a1a1a;
+}
+
+.theme-checkbox:checked ~ * .about-card,
+.theme-checkbox:checked ~ * .service-card,
+.theme-checkbox:checked ~ * .product-card,
+.theme-checkbox:checked ~ * .info-item,
+.theme-checkbox:checked ~ * .faq-item {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+/* --- Formularios en modo oscuro --- */
+.theme-checkbox:checked ~ * .search-input,
+.theme-checkbox:checked ~ * .form-group input,
+.theme-checkbox:checked ~ * .form-group select,
+.theme-checkbox:checked ~ * .form-group textarea {
+  background: #1e1e1e;
+  color: #ffffff;
+  border-color: #cccccc;
+}
+
+.theme-checkbox:checked ~ * .category-btn {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #cccccc;
+}
+
+.theme-checkbox:checked ~ * footer {
+  background: #000000;
+}
+
+/* ========================================
+   FIN MODO OSCURO
+======================================== */
+
+/* ========================================
+   6. RESPONSIVE DESIGN - MEDIA QUERIES
+======================================== */
+
+@media (max-width: 768px) {
+  /* --- Header responsive --- */
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  /* --- Hero responsive (index.html) --- */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  /* --- Page header responsive --- */
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  /* --- Search responsive (productos.html) --- */
+  .search-container {
+    flex-direction: column;
+  }
+
+  /* --- Categories responsive (productos.html) --- */
+  .category-filters {
+    justify-content: center;
+  }
+
+  /* --- Contact responsive (contacto.html) --- */
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* --- Theme button responsive --- */
+  .theme-button {
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ========================================
+   FIN RESPONSIVE DESIGN
+======================================== */

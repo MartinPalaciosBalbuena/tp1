@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto - Infinity Fans Store</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Checkbox oculto para controlar el tema -->
+    <input type="checkbox" id="theme-toggle" class="theme-checkbox" />
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">∞ Infinity Fans Store</div>
+          <nav>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="productos.html">Productos</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Botón visual para el tema -->
+    <label for="theme-toggle" class="theme-button" title="Cambiar tema">
+      <span class="theme-icon-light">🌙</span>
+      <span class="theme-icon-dark">☀️</span>
+    </label>
+
+    <main>
+      <div class="container">
+        <div class="page-header">
+          <h1>Contactanos</h1>
+          <p>
+            ¿Tenés alguna consulta? ¡Queremos escucharte! Completá el formulario
+            y te responderemos a la brevedad.
+          </p>
+        </div>
+
+        <div class="contact-section">
+          <div class="contact-form">
+            <h2>Envianos tu consulta</h2>
+            <form>
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" />
+              </div>
+
+              <div class="form-group">
+                <label for="tipo-consulta">Tipo de consulta *</label>
+                <select id="tipo-consulta" name="tipo-consulta" required>
+                  <option value="">Seleccioná una opción</option>
+                  <option value="producto">Consulta sobre producto</option>
+                  <option value="pedido">Estado de mi pedido</option>
+                  <option value="envio">Información de envío</option>
+                  <option value="devolucion">Devolución o cambio</option>
+                  <option value="mayorista">Consulta mayorista</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="equipo-favorito"
+                  >¿Cuál es tu equipo favorito?</label
+                >
+                <input
+                  type="text"
+                  id="equipo-favorito"
+                  name="equipo-favorito"
+                  placeholder="Ej: Boca Juniors, Argentina, Barcelona..."
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="numero-pedido">Número de pedido (si aplica)</label>
+                <input
+                  type="text"
+                  id="numero-pedido"
+                  name="numero-pedido"
+                  disabled
+                  placeholder="Será habilitado automáticamente"
+                />
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter" />
+                <label for="newsletter"
+                  >Quiero recibir ofertas y novedades por email</label
+                >
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="whatsapp" name="whatsapp" />
+                <label for="whatsapp"
+                  >Acepto recibir notificaciones por WhatsApp</label
+                >
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="terminos" name="terminos" required />
+                <label for="terminos"
+                  >Acepto los términos y condiciones *</label
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje *</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  placeholder="Contanos tu consulta en detalle..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">
+                Enviar consulta
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-info">
+            <h2>Información de contacto</h2>
+
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-details">
+                <h3>Email</h3>
+                <p>info@infinityfansstore.com</p>
+                <p>ventas@infinityfansstore.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div class="info-details">
+                <h3>Teléfono & WhatsApp</h3>
+                <p>+54 11 1234-5678</p>
+                <p>Lun a Vie: 9:00 - 18:00hs</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-details">
+                <h3>Dirección</h3>
+                <p>Calle Falsa N°123</p>
+                <p>Buenos Aires, Argentina</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">🕒</div>
+              <div class="info-details">
+                <h3>Horarios de atención</h3>
+                <p>Lunes a Viernes: 9:00 - 18:00</p>
+                <p>Sábados: 9:00 - 15:00</p>
+                <p>Domingos: Cerrado</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">🚚</div>
+              <div class="info-details">
+                <h3>Envíos</h3>
+                <p>CABA: 24-48hs</p>
+                <p>GBA: 2-3 días</p>
+                <p>Interior: 3-7 días</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-section">
+          <h2>Nuestra ubicación</h2>
+          <div class="map-placeholder">
+            🗺️ Mapa de ubicación - Av. Corrientes 1234, Buenos Aires
+          </div>
+          <p>
+            Visitanos en nuestro showroom para ver todos los productos en
+            persona
+          </p>
+        </div>
+
+        <div class="faq-section">
+          <h2>Preguntas frecuentes</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">🤔 ¿Los productos son originales?</div>
+            <div class="faq-answer">
+              ¡Absolutamente! Todos nuestros productos deportivos son oficiales
+              con licencia, y los productos de entretenimiento son merchandise
+              oficial autorizado.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">🚚 ¿Cómo funcionan los envíos?</div>
+            <div class="faq-answer">
+              Realizamos envíos a todo el país. CABA y GBA tienen envío gratis
+              en compras superiores a $50.000. Para el interior, consultar
+              costos según zona.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">💳 ¿Qué medios de pago aceptan?</div>
+            <div class="faq-answer">
+              Aceptamos efectivo, tarjetas de débito y crédito (hasta 12
+              cuotas), transferencias bancarias y MercadoPago.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              🔄 ¿Puedo cambiar o devolver un producto?
+            </div>
+            <div class="faq-answer">
+              Sí, tenés 30 días para cambios y devoluciones con el producto en
+              perfecto estado y con el ticket de compra.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">⚽ ¿Tienen productos personalizados?</div>
+            <div class="faq-answer">
+              ¡Por supuesto! Podemos personalizar camisetas con tu nombre y
+              número favorito. Consultanos por WhatsApp para más detalles.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Contacto</h3>
+            <p>📧 info@infinityfansstore.com</p>
+            <p>📱 +54 11 1234-5678</p>
+            <p>📍 Buenos Aires, Argentina</p>
+          </div>
+          <div class="footer-section">
+            <h3>Horarios</h3>
+            <p>Lunes a Viernes: 9:00 - 18:00</p>
+            <p>Sábados: 9:00 - 15:00</p>
+            <p>Domingos: Cerrado</p>
+          </div>
+          <div class="footer-section">
+            <h3>Síguenos</h3>
+            <div class="social-links">
+              <a href="#">📘</a>
+              <a href="#">📸</a>
+              <a href="#">🐦</a>
+              <a href="#">💬</a>
+            </div>
+          </div>
+        </div>
+        <p>
+          &copy; 2024 Infinity Fans Store. Todos los derechos reservados. Hecho
+          con ❤️ en Argentina.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
